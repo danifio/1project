@@ -38,7 +38,7 @@
 </div>
 <div class="container">
     <form action="1projectphp.php" method="post">
-        <input type="hidden" name="step" value="1">
+        <input type="hidden" name="step" value="0">
         <div class="row">
             <div class="col-sm-6">
                 <h3>REGISTRATI</h3>
