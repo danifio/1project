@@ -20,43 +20,28 @@
                 require('registrazione.php');
                 break;
             case 3:
-                /*auth_logout(), esegue il logout dell’utente connesso, eliminando la sessione a lui riferita*/
+                /*auth_logout(), esegue il logout dellï¿½utente connesso, eliminando la sessione a lui riferita*/
         }
     }
     else {
         echo "Error. Step not present";
     }
 
-    function step0(){
+    function step0()
+    {
         global $mysqli;
 
-        if($_POST['password']=="") echo "inserire password";
-        else if($_POST['email']=="") echo "inserire email";
-        else {
-            /*if($_POST['email']=="") echo "";
-            if($_POST['password']=="") echo "";
-
-            fare il check con la registrazione
-
-            registrazione.email==accesso.email
-
-            &&
-
-            registrazione.password==accesso.password
-
-            ok, puoi accedere
-
-            auth_login() effettua il login: accetta come parametri l’username e
-            la password esegue una query di selezione per controllare che i dati permettano il login di un utente.
-            In caso affermativo restituisce lo status AUTH_LOGEDD_IN ed i dati dell’utente,
-            in caso negativo restituisce AUTH_INVALID_PARAMS e nessun altra informazione.
-
-            */
-
+        if ($_POST['password'] == "") echo "Inserire password";
+        if ($_POST['email'] == "") echo "Campo vuoto. Inserire email";
+        if (!mberegi('^[a-z0-9][_.a-z0-9-]+@([a-z0-9][0-9a-z-]+.)+([a-z]{2,4})', $_POST['email'])) {
+                echo "Indirizzo email NON valido";
+            } else {
+                echo "Indirizzo email valido";
             $query_accesso = "INSERT INTO user_project (password, email)
                          VALUES ('{$_POST['password']}','{$_POST['email']}')";
 
             mysqli_query($mysqli, $query_accesso) or die(mysqli_error($mysqli));
+
         }
     }
 
